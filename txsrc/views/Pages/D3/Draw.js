@@ -29,14 +29,10 @@ const Draw = (
   let containerElement = svgRef.current;
   let containerX = 0;
   let containerY = 0;
-  if (containerElement) {
-    containerX = containerElement.clientWidth;
-    containerY = containerElement.clientHeight;
-  }
   let yearLableInc = 80;
   let mapXOffSet = -100;
-  let w = containerX;
-  let h = containerY;
+  let h = container.mapXOffSetWidth;
+  let w = container.mapXOffSetHeight;
   let yearSelected = "2013";
   let generatedGroups = generateAllGroups(d3, container);
   while (!generatedGroups) {
@@ -62,20 +58,6 @@ const Draw = (
     5,
     0.2
   );
-
-  let names = [];
-  if (mapData) {
-    console.log(mapData);
-    for (let i = 0; i < mapData.features.length; i++) {
-      names.push(mapData.features[i].properties.NAME_4);
-    }
-    generatedGroups.mapContainer
-      .selectAll("path")
-      .data(mapData.features)
-      .enter()
-      .append("path")
-      .attr("d", (d) => geoLocations(d));
-  }
 
   function reDrawCan() {
     const annualRainData = annualrain.data;

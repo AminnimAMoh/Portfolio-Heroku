@@ -25,7 +25,7 @@ export const slumScale = (data,slums) => {
 };
 
 export const geoLocations=(data)=>{
-  const projection = d3.geoMercator().scale(5200).translate([-7720, 2600]);
+  const projection = d3.geoEquirectangular();
 
   const geoGenerator = d3.geoPath().projection(projection);
 
@@ -35,8 +35,8 @@ export const geoLocations=(data)=>{
 export const citiesProjection=(data)=>{
   const projectionTest = d3
     .geoEquirectangular()
-    .scale(5100)
-    .translate([-7565, 2478]);
+    .scale(5760)
+    .translate([-8650, 2860]);
     return projectionTest(data)
 }
 

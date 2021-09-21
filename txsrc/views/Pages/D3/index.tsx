@@ -6,19 +6,47 @@ import {
   fetchSlumsData,
   fetchPopulationData,
   fetchMonthData,
-  fetchMap
+  fetchMap,
 } from "../../../redux/slices/fetchSlice";
 import { RootState } from "../../../store";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyle = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    height: "100%",
+    position: "relative",
+  },
+  mapSVG: {
+
+  },
+  mapGUI: {
+    // width: "100%",
+    // height: "100%",
+    position: 'absolute',
+    top: "0",
+    left: "0"
+  },
+}));
 
 function D3(): React.ReactElement {
   const {
     dataStore: { annualrain, slums, population, months, mapJSON, refresh },
   } = useSelector((state: RootState) => state);
+  const classes = useStyle();
   const dispatch = useDispatch();
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const mapSVG = useRef<SVGSVGElement | null>(null);
   const [svgSetupTrigger, setSVGSetupTrigger] = useState<boolean>(false);
 
   const [svg, setSvg] = useState<null | Selection<
+    SVGSVGElement | null,
+    unknown,
+    null,
+    undefined
+  >>(null);
+
+  const [mapSVGState, setMapSVGState] = useState<null | Selection<
     SVGSVGElement | null,
     unknown,
     null,
@@ -51,24 +79,57 @@ function D3(): React.ReactElement {
       slums.state === "fulfilled" &&
       population.state === "fulfilled" &&
       months.state === "fulfilled" &&
-      mapJSON.state==="fulfilled" &&
+      mapJSON.state === "fulfilled" &&
       setSVGSetupTrigger(true);
-  }, [annualrain.state, slums.state, population.state, months.state, mapJSON.state]);
+  }, [
+    annualrain.state,
+    slums.state,
+    population.state,
+    months.state,
+    mapJSON.state,
+  ]);
 
   useEffect(() => {
     !svg && svgSetupTrigger && setSvg(select(svgRef.current));
     if (annualrain.data.length > 0 && svg) {
       import(/* webpackChunkName: 'D3-Draw' */ "./Draw").then(
         ({ default: Draw }) => {
-          Draw(svg, svgRef, annualrain, slums, population, months, mapJSON.data);
+          Draw(
+            svg,
+            svgRef,
+            annualrain,
+            slums,
+            population,
+            months,
+            mapJSON.data
+          );
         }
       );
     }
-  }, [svg, svgSetupTrigger, annualrain, slums, population, months]);
+
+    !mapSVGState && svgSetupTrigger && setMapSVGState(select(mapSVG.current));
+    if (mapJSON.data && mapSVGState) {
+      import(/* webpackChunkName: 'D3-mapSVG' */ "./MapComponents/Map").then(
+        ({ default: SVGMAP }) => {
+          SVGMAP(mapSVGState, mapJSON.data);
+        }
+      );
+    }
+  }, [
+    svg,
+    svgSetupTrigger,
+    annualrain,
+    slums,
+    population,
+    months,
+    mapJSON,
+    mapSVGState,
+  ]);
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <svg style={{ width: "100%", height: "100%" }} ref={svgRef} />
+    <div className={classes.root}>
+      <svg className={classes.mapSVG} ref={mapSVG} viewBox="0 0 20 20" />
+      <svg className={classes.mapGUI} ref={svgRef} viewBox="-100 0 800 800" />
     </div>
   );
 }
