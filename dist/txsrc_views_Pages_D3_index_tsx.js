@@ -14,10 +14,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/select.js");
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! d3-selection */ "./node_modules/d3-selection/src/select.js");
+/* harmony import */ var _material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/useMediaQuery */ "./node_modules/@material-ui/core/es/useMediaQuery/useMediaQuery.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../redux/slices/fetchSlice */ "./txsrc/redux/slices/fetchSlice.tsx");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/es/styles/makeStyles.js");
+
 
 
 
@@ -27,15 +29,15 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_3__["defau
   root: {
     width: "100%",
     height: "100%",
-    position: "relative"
-  },
-  mapSVG: {},
-  mapGUI: {
-    // width: "100%",
-    // height: "100%",
-    position: 'absolute',
-    top: "0",
-    left: "0"
+    position: "relative",
+    "&> *": {
+      [theme.breakpoints.up("md")]: {
+        padding: theme.spacing(6)
+      },
+      position: "absolute",
+      top: "0",
+      left: "0"
+    }
   }
 }));
 
@@ -55,6 +57,17 @@ function D3() {
   const svgRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const mapSVG = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const [svgSetupTrigger, setSVGSetupTrigger] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const windowState = (0,_material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_4__["default"])("(max-width:600px)");
+  const [viewBoxesSetup, setViewBoxesSrtup] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    desktop: {
+      map: "-1 0 25 25",
+      UI: "-140 0 1000 1000"
+    },
+    mobile: {
+      map: "1.3 0 20 20",
+      UI: "-45 0 800 800"
+    }
+  });
   const [svg, setSvg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [mapSVGState, setMapSVGState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -68,7 +81,7 @@ function D3() {
     annualrain.state === "fulfilled" && slums.state === "fulfilled" && population.state === "fulfilled" && months.state === "fulfilled" && mapJSON.state === "fulfilled" && setSVGSetupTrigger(true);
   }, [annualrain.state, slums.state, population.state, months.state, mapJSON.state]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    !svg && svgSetupTrigger && setSvg((0,d3_selection__WEBPACK_IMPORTED_MODULE_4__["default"])(svgRef.current));
+    !svg && svgSetupTrigger && setSvg((0,d3_selection__WEBPACK_IMPORTED_MODULE_5__["default"])(svgRef.current));
 
     if (annualrain.data.length > 0 && svg) {
       Promise.all(/*! import() | D3-Draw */[__webpack_require__.e("vendors-node_modules_d3_src_index_js"), __webpack_require__.e("D3-Draw")]).then(__webpack_require__.bind(__webpack_require__, /*! ./Draw */ "./txsrc/views/Pages/D3/Draw.js")).then(({
@@ -78,7 +91,7 @@ function D3() {
       });
     }
 
-    !mapSVGState && svgSetupTrigger && setMapSVGState((0,d3_selection__WEBPACK_IMPORTED_MODULE_4__["default"])(mapSVG.current));
+    !mapSVGState && svgSetupTrigger && setMapSVGState((0,d3_selection__WEBPACK_IMPORTED_MODULE_5__["default"])(mapSVG.current));
 
     if (mapJSON.data && mapSVGState) {
       Promise.all(/*! import() | D3-mapSVG */[__webpack_require__.e("vendors-node_modules_d3_src_index_js"), __webpack_require__.e("D3-mapSVG")]).then(__webpack_require__.bind(__webpack_require__, /*! ./MapComponents/Map */ "./txsrc/views/Pages/D3/MapComponents/Map.js")).then(({
@@ -91,13 +104,11 @@ function D3() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-    className: classes.mapSVG,
     ref: mapSVG,
-    viewBox: "0 0 20 20"
+    viewBox: windowState ? viewBoxesSetup.mobile.map : viewBoxesSetup.desktop.map
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", {
-    className: classes.mapGUI,
     ref: svgRef,
-    viewBox: "-100 0 800 800"
+    viewBox: windowState ? viewBoxesSetup.mobile.UI : viewBoxesSetup.desktop.UI
   }));
 }
 

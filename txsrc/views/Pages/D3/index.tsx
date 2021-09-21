@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { select, Selection } from "d3-selection";
+import { useMediaQuery } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAnnualrainData,
@@ -11,21 +12,24 @@ import {
 import { RootState } from "../../../store";
 import { makeStyles } from "@material-ui/core/styles";
 
+interface viewBoxSetups {
+  mobile: { map: string; UI: string };
+  desktop: { map: string; UI: string };
+}
+
 const useStyle = makeStyles((theme) => ({
   root: {
     width: "100%",
     height: "100%",
     position: "relative",
-  },
-  mapSVG: {
-
-  },
-  mapGUI: {
-    // width: "100%",
-    // height: "100%",
-    position: 'absolute',
-    top: "0",
-    left: "0"
+    "&> *": {
+      [theme.breakpoints.up("md")]: {
+        padding: theme.spacing(6),
+      },
+      position: "absolute",
+      top: "0",
+      left: "0",
+    },
   },
 }));
 
@@ -38,6 +42,11 @@ function D3(): React.ReactElement {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const mapSVG = useRef<SVGSVGElement | null>(null);
   const [svgSetupTrigger, setSVGSetupTrigger] = useState<boolean>(false);
+  const windowState = useMediaQuery("(max-width:600px)");
+  const [viewBoxesSetup, setViewBoxesSrtup] = useState<viewBoxSetups>({
+    desktop: { map: "-1 0 25 25", UI: "-140 0 1000 1000" },
+    mobile: { map: "1.3 0 20 20", UI: "-45 0 800 800" },
+  });
 
   const [svg, setSvg] = useState<null | Selection<
     SVGSVGElement | null,
@@ -128,8 +137,18 @@ function D3(): React.ReactElement {
 
   return (
     <div className={classes.root}>
-      <svg className={classes.mapSVG} ref={mapSVG} viewBox="0 0 20 20" />
-      <svg className={classes.mapGUI} ref={svgRef} viewBox="-100 0 800 800" />
+      <svg
+        ref={mapSVG}
+        viewBox={
+          windowState ? viewBoxesSetup.mobile.map : viewBoxesSetup.desktop.map
+        }
+      />
+      <svg
+        ref={svgRef}
+        viewBox={
+          windowState ? viewBoxesSetup.mobile.UI : viewBoxesSetup.desktop.UI
+        }
+      />
     </div>
   );
 }
