@@ -17,19 +17,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles */ "./txsrc/views/Pages/styles.tsx");
 /* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/es/Grid/Grid.js");
 /* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/es/Typography/Typography.js");
-/* harmony import */ var _material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Link */ "./node_modules/@material-ui/core/es/Link/Link.js");
 
 
 
 
-
+const Topicheader = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Shared-Components_Page-header_index_tsx-_75d21")]).then(__webpack_require__.bind(__webpack_require__, /*! ../../Shared-Components/Page-header */ "./txsrc/views/Shared-Components/Page-header/index.tsx")));
 const YouTubeEmbed = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "txsrc_views_Pages_YouTubeEmbed_index_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../YouTubeEmbed */ "./txsrc/views/Pages/YouTubeEmbed/index.tsx")));
 
 function UI() {
   const classes = (0,_styles__WEBPACK_IMPORTED_MODULE_1__["default"])();
-
-  const preventDefault = event => event.preventDefault();
-
+  const TopicProps = {
+    ProjectName: "Figting misinformation through social media",
+    Collaboration: ["Developer and Video: Mohammad Amin Mohammadi", "UX/UI Designer and documentation: Jessica Owens"],
+    Links: [{
+      href: "https://covid-19-measures-assessment.web.app/",
+      linkTag: "Link to our high-fidelity prototype"
+    }, {
+      href: "Assets/UI/A3 Final Report.pdf",
+      linkTag: "Link to full report"
+    }],
+    description: "In our current state misinformation is frequently shared and whether this is intentional or inadvertent it can have catastrophic results on the spread of COVID-19. Maximising public access to balanced, reliable, and up to date information is a critical success factor for authorities worldwide. Management of highly trusted information will have a vital role to play in the control of COVID-19. The COVID-19 Fact Check app has been built to facilitate an effective means of sharing information going forward. The application is an informal educational tool, which encourages users to become aware of the false or misleading information that they may find themselves coming across when partaking in online activity. It’s a gamified fun fact-based tool which will help the world #StopTheSpread."
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -37,55 +45,7 @@ function UI() {
     justify: "space-between",
     alignContent: "flex-start",
     className: classes.topic_grid
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    item: true,
-    lg: 6,
-    md: 12,
-    className: classes.topick_heading
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "h3"
-  }, "Figting misinformation through social media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "h4"
-  }, "Collaboration Team:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "body2",
-    style: {
-      fontSize: "12px",
-      color: "#426164"
-    }
-  }, "Developer and Video: Mohammad Amin Mohammadi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "body2",
-    style: {
-      fontSize: "12px",
-      color: "#426164"
-    }
-  }, "UX/UI Designer and documentation: Jessica Owens"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: "https://covid-19-measures-assessment.web.app/",
-    className: classes.onlineLink,
-    style: {
-      bottom: "0px"
-    },
-    onClick: e => preventDefault
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "h5",
-    className: classes.link_ToExternals
-  }, "Link to our high-fidelity prototype")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    href: "Assets/UI/A3 Final Report.pdf",
-    className: classes.onlineLink,
-    style: {
-      bottom: "0px"
-    },
-    onClick: e => preventDefault
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "h5",
-    className: classes.link_ToExternals
-  }, "Link to full report"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    item: true,
-    lg: 6,
-    md: 12,
-    className: classes.topic_pragraph
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "body1"
-  }, "In our current state misinformation is frequently shared and whether this is intentional or inadvertent it can have catastrophic results on the spread of COVID-19. Maximising public access to balanced, reliable, and up to date information is a critical success factor for authorities worldwide. Management of highly trusted information will have a vital role to play in the control of COVID-19. The COVID-19 Fact Check app has been built to facilitate an effective means of sharing information going forward. The application is an informal educational tool, which encourages users to become aware of the false or misleading information that they may find themselves coming across when partaking in online activity. It\u2019s a gamified fun fact-based tool which will help the world #StopTheSpread.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Topicheader, TopicProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(YouTubeEmbed, {

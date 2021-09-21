@@ -1,16 +1,35 @@
 import React from "react";
 import useStyle from "../styles";
-import { Grid, Typography, Link } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
+
+const Topicheader = React.lazy(
+  () => import("../../Shared-Components/Page-header")
+);
 
 const YouTubeEmbed = React.lazy(() => import("../YouTubeEmbed"));
 
 function UI(): React.ReactElement {
   const classes = useStyle();
-  const preventDefault = (
-    event:
-      | React.MouseEvent<HTMLAnchorElement, MouseEvent>
-      | React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => event.preventDefault();
+  const TopicProps = {
+    ProjectName: "Figting misinformation through social media",
+    Collaboration: [
+      "Developer and Video: Mohammad Amin Mohammadi",
+      "UX/UI Designer and documentation: Jessica Owens",
+    ],
+    Links: [
+      {
+        href: "https://covid-19-measures-assessment.web.app/",
+        linkTag: "Link to our high-fidelity prototype",
+      },
+      {
+        href: "Assets/UI/A3 Final Report.pdf",
+        linkTag: "Link to full report",
+      },
+    ],
+    description:
+      "In our current state misinformation is frequently shared and whether this is intentional or inadvertent it can have catastrophic results on the spread of COVID-19. Maximising public access to balanced, reliable, and up to date information is a critical success factor for authorities worldwide. Management of highly trusted information will have a vital role to play in the control of COVID-19. The COVID-19 Fact Check app has been built to facilitate an effective means of sharing information going forward. The application is an informal educational tool, which encourages users to become aware of the false or misleading information that they may find themselves coming across when partaking in online activity. It’s a gamified fun fact-based tool which will help the world #StopTheSpread.",
+  }; 
+
   return (
     <div className={classes.root}>
       <Grid
@@ -19,62 +38,9 @@ function UI(): React.ReactElement {
         alignContent="flex-start"
         className={classes.topic_grid}
       >
-        <Grid item lg={6} md={12} className={classes.topick_heading}>
-          <Typography variant="h3">
-            Figting misinformation through social media
-          </Typography>
-          <Typography variant="h4">Collaboration Team:</Typography>
-          <Typography
-            variant="body2"
-            style={{ fontSize: "12px", color: "#426164" }}
-          >
-            Developer and Video: Mohammad Amin Mohammadi
-          </Typography>
-          <Typography
-            variant="body2"
-            style={{ fontSize: "12px", color: "#426164" }}
-          >
-            UX/UI Designer and documentation: Jessica Owens
-          </Typography>
-          <Link
-            href="https://covid-19-measures-assessment.web.app/"
-            className={classes.onlineLink}
-            style={{ bottom: "0px" }}
-            onClick={(e) => preventDefault}
-          >
-            <Typography variant="h5" className={classes.link_ToExternals}>
-              Link to our high-fidelity prototype
-            </Typography>
-          </Link>
-          <Link
-            href="Assets/UI/A3 Final Report.pdf"
-            className={classes.onlineLink}
-            style={{ bottom: "0px" }}
-            onClick={(e) => preventDefault}
-          >
-            <Typography variant="h5" className={classes.link_ToExternals}>
-              Link to full report
-            </Typography>
-          </Link>
-        </Grid>
-        <Grid item lg={6} md={12} className={classes.topic_pragraph}>
-          <Typography variant="body1">
-            In our current state misinformation is frequently shared and whether
-            this is intentional or inadvertent it can have catastrophic results
-            on the spread of COVID-19. Maximising public access to balanced,
-            reliable, and up to date information is a critical success factor
-            for authorities worldwide. Management of highly trusted information
-            will have a vital role to play in the control of COVID-19. The
-            COVID-19 Fact Check app has been built to facilitate an effective
-            means of sharing information going forward. The application is an
-            informal educational tool, which encourages users to become aware of
-            the false or misleading information that they may find themselves
-            coming across when partaking in online activity. It’s a gamified fun
-            fact-based tool which will help the world #StopTheSpread.
-          </Typography>
-        </Grid>
+        <Topicheader {...TopicProps} />
         <Grid item xs={12}>
-            <YouTubeEmbed embedID="aQ017METpTU" />
+          <YouTubeEmbed embedID="aQ017METpTU" />
         </Grid>
         <Grid
           item

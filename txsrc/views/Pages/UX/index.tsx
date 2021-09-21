@@ -5,6 +5,9 @@ import { Grid, Typography, Link } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
+const Topicheader = React.lazy(
+  () => import("../../Shared-Components/Page-header")
+);
 const YouTubeEmbed =React.lazy(()=>import("../YouTubeEmbed"));
 
 function UX(): React.ReactElement {
@@ -12,11 +15,28 @@ function UX(): React.ReactElement {
   const {
     screenAction: { gridRowToReverce, gridRowToColumn },
   } = useSelector((state: RootState) => state);
-  const preventDefault = (
-    event:
-      | React.MouseEvent<HTMLAnchorElement, MouseEvent>
-      | React.MouseEvent<HTMLSpanElement, MouseEvent>
-  ) => event.preventDefault();
+
+  const TopicProps = {
+    ProjectName: "User Experience Case Studies. Environmental Conservation.",
+    Collaboration: [
+      "User Journey Map & Documentation: Mohammad Amin Mohammadi",
+      "User Testings & Video: Brendan O'Reilly",
+      "Synthesizing Activity Design: Elliott Magrath"
+    ],
+    Links: [
+      {
+        href: "images/Pages/UX/Visual-Report.pdf",
+        linkTag: "Link to full report",
+      },
+      {
+        href: "Assets/UI/A3 Final Report.pdf",
+        linkTag: "Link to full report",
+      },
+    ],
+    description:
+      "Technology has played a significant role in increasing the world population dramatically. Consequently it has increased the level of the complexity of problems. However, user research methods developed around design frameworks can be a powerful tool to face these complex wicked problems. since the day I was introduced to the digital world, I have always been looking and thinking beyond the applications and platforms I have used. The temptation to find reliable solutions to build a better future for both humanity and the environment we live at.",
+  }; 
+
   return (
     <div className={classes.root}>
       <Grid
@@ -26,53 +46,7 @@ function UX(): React.ReactElement {
         alignContent="flex-start"
         className={classes.topic_grid}
       >
-        <Grid item lg={6} md={12} className={classes.topick_heading}>
-          <Typography variant="h3">
-            User Experience Case Studies. Environmental Conservation.
-          </Typography>
-          <Typography variant="h4">Collaboration Team:</Typography>
-          <Typography
-            variant="body2"
-            style={{ fontSize: "12px", color: "#426164" }}
-          >
-            User Journey Map & Documentation: Mohammad Amin Mohammadi
-          </Typography>
-          <Typography
-            variant="body2"
-            style={{ fontSize: "12px", color: "#426164" }}
-          >
-            User Testings & Video: Brendan O'Reilly
-          </Typography>
-          <Typography
-            variant="body2"
-            style={{ fontSize: "12px", color: "#426164" }}
-          >
-            Synthesizing Activity Design: Elliott Magrath
-          </Typography>
-          <Link
-            href="images/Pages/UX/Visual-Report.pdf"
-            className={classes.onlineLink}
-            style={{ bottom: "0px" }}
-            onClick={(e) => preventDefault}
-          >
-            <Typography variant="h5" className={classes.link_ToExternals}>
-              Link to full report
-            </Typography>
-          </Link>
-        </Grid>
-        <Grid item lg={6} md={12} className={classes.topic_pragraph}>
-          <Typography variant="body1">
-            Technology has played a significant role in increasing the world
-            population dramatically. Consequently it has increased the level of
-            the complexity of problems. However, user research methods developed
-            around design frameworks can be a powerful tool to face these
-            complex wicked problems. since the day I was introduced to the
-            digital world, I have always been looking and thinking beyond the
-            applications and platforms I have used. The temptation to find
-            reliable solutions to build a better future for both humanity and
-            the environment we live at.
-          </Typography>
-        </Grid>
+        <Topicheader {...TopicProps}/>
         <Grid item xs={12}>
           <YouTubeEmbed embedID="AikAa-n8vq8" />
         </Grid>

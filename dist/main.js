@@ -10164,9 +10164,9 @@ __webpack_require__.r(__webpack_exports__);
 // import UX from "../Pages/UX";
 // import UI from "../Pages/UI";
 // import CV from "../Pages/CV";
-const UX = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Pages_UX_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/UX */ "./txsrc/views/Pages/UX/index.tsx")));
-const UI = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Pages_UI_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/UI */ "./txsrc/views/Pages/UI/index.tsx")));
-const CV = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Pages_CV_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/CV */ "./txsrc/views/Pages/CV/index.tsx")));
+const UX = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js"), __webpack_require__.e("vendors-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Pages_UX_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/UX */ "./txsrc/views/Pages/UX/index.tsx")));
+const UI = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js"), __webpack_require__.e("txsrc_views_Pages_UI_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/UI */ "./txsrc/views/Pages/UI/index.tsx")));
+const CV = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_material-ui_core_es_Grid_Grid_js"), __webpack_require__.e("vendors-node_modules_material-ui_core_es_Link_Link_js"), __webpack_require__.e("txsrc_views_Pages_CV_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/CV */ "./txsrc/views/Pages/CV/index.tsx")));
 const D3 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_d3-selection_src_select_js"), __webpack_require__.e("txsrc_views_Pages_D3_index_tsx")]).then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/D3 */ "./txsrc/views/Pages/D3/index.tsx"))); // import D3 from "../Pages/D3";
 
 
@@ -10828,6 +10828,11 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["defau
     marginRight: "auto",
     direction: "ltr"
   },
+  inner_GridContainer: {
+    '& > *': {
+      paddingTop: theme.spacing(10)
+    }
+  },
   topic_grid: {
     color: "white",
     '& > .MuiGrid-item img': {
@@ -10849,11 +10854,6 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["defau
   onlineLink: {},
   link_ToExternals: {
     color: "#5C3B42"
-  },
-  inner_GridContainer: {
-    '& > *': {
-      paddingTop: theme.spacing(10)
-    }
   },
   topic_pragraph: {},
   video_container: {

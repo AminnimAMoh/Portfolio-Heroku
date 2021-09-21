@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const Topicheader = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "txsrc_views_Shared-Components_Page-header_index_tsx-_75d20").then(__webpack_require__.bind(__webpack_require__, /*! ../../Shared-Components/Page-header */ "./txsrc/views/Shared-Components/Page-header/index.tsx")));
 const YouTubeEmbed = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(() => __webpack_require__.e(/*! import() */ "txsrc_views_Pages_YouTubeEmbed_index_tsx").then(__webpack_require__.bind(__webpack_require__, /*! ../YouTubeEmbed */ "./txsrc/views/Pages/YouTubeEmbed/index.tsx")));
 
 function UX() {
@@ -33,9 +34,18 @@ function UX() {
       gridRowToColumn
     }
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state);
-
-  const preventDefault = event => event.preventDefault();
-
+  const TopicProps = {
+    ProjectName: "User Experience Case Studies. Environmental Conservation.",
+    Collaboration: ["User Journey Map & Documentation: Mohammad Amin Mohammadi", "User Testings & Video: Brendan O'Reilly", "Synthesizing Activity Design: Elliott Magrath"],
+    Links: [{
+      href: "images/Pages/UX/Visual-Report.pdf",
+      linkTag: "Link to full report"
+    }, {
+      href: "Assets/UI/A3 Final Report.pdf",
+      linkTag: "Link to full report"
+    }],
+    description: "Technology has played a significant role in increasing the world population dramatically. Consequently it has increased the level of the complexity of problems. However, user research methods developed around design frameworks can be a powerful tool to face these complex wicked problems. since the day I was introduced to the digital world, I have always been looking and thinking beyond the applications and platforms I have used. The temptation to find reliable solutions to build a better future for both humanity and the environment we live at."
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -44,51 +54,7 @@ function UX() {
     justify: "space-between",
     alignContent: "flex-start",
     className: classes.topic_grid
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    item: true,
-    lg: 6,
-    md: 12,
-    className: classes.topick_heading
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "h3"
-  }, "User Experience Case Studies. Environmental Conservation."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "h4"
-  }, "Collaboration Team:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "body2",
-    style: {
-      fontSize: "12px",
-      color: "#426164"
-    }
-  }, "User Journey Map & Documentation: Mohammad Amin Mohammadi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "body2",
-    style: {
-      fontSize: "12px",
-      color: "#426164"
-    }
-  }, "User Testings & Video: Brendan O'Reilly"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "body2",
-    style: {
-      fontSize: "12px",
-      color: "#426164"
-    }
-  }, "Synthesizing Activity Design: Elliott Magrath"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    href: "images/Pages/UX/Visual-Report.pdf",
-    className: classes.onlineLink,
-    style: {
-      bottom: "0px"
-    },
-    onClick: e => preventDefault
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "h5",
-    className: classes.link_ToExternals
-  }, "Link to full report"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    item: true,
-    lg: 6,
-    md: 12,
-    className: classes.topic_pragraph
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "body1"
-  }, "Technology has played a significant role in increasing the world population dramatically. Consequently it has increased the level of the complexity of problems. However, user research methods developed around design frameworks can be a powerful tool to face these complex wicked problems. since the day I was introduced to the digital world, I have always been looking and thinking beyond the applications and platforms I have used. The temptation to find reliable solutions to build a better future for both humanity and the environment we live at.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Topicheader, TopicProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_3__["default"], {
     item: true,
     xs: 12
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(YouTubeEmbed, {

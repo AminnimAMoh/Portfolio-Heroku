@@ -12,6 +12,12 @@ const useStyle = makeStyles((theme) => ({
     marginRight: "auto",
     direction: "ltr",
   },
+
+  inner_GridContainer: {
+    '& > *': {
+      paddingTop: theme.spacing(10)
+    }
+  },
   topic_grid: {
     color: "white",
     '& > .MuiGrid-item img': {
@@ -33,11 +39,6 @@ const useStyle = makeStyles((theme) => ({
   onlineLink: {},
   link_ToExternals: {
     color: "#5C3B42",
-  },
-  inner_GridContainer: {
-    '& > *': {
-      paddingTop: theme.spacing(10)
-    }
   },
   topic_pragraph: {},
   video_container:{
