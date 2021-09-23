@@ -45,6 +45,7 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   MobileFrame: {
+    zIndex: 1,
     display: "none",
     position: "sticky",
     height: "auto",
@@ -58,18 +59,28 @@ const useStyle = makeStyles((theme) => ({
     position: "sticky",
     top: "100%",
     right: "0%",
-    transform: "translateY(-15px) scale(0)",
+    transform: "translate(40px,-15px) scale(0)",
     width: mytheme.radius,
     height: mytheme.radius,
     borderRadius: "50%",
     cursor: "pointer",
     transition: "transform .5s ease-in-out",
+    "&.open":{
+      transform: "translate(40px,-35px) scale(.7)",
+      [theme.breakpoints.down("lg")]:{
+        transform: "translate(20px,-120px) scale(.7)",
+      },
+      [theme.breakpoints.down('md')]:{
+      transform: "translate(40px,-35px) scale(.5)",
+      }
+    },
     [theme.breakpoints.down('md')]:{
-      transform: "translateY(-35px) scale(0)",
+      transform: "translateY(40px,-35px) scale(0)",
     },
     "& >div": {
       width: '100%',
       height: '100%',
+      fontSize: '1em',
       backgroundImage: "url(images/Button/ScrollToTop/Top.png)",
       backgroundPosition: "center",
       backgroundSize: "contain",

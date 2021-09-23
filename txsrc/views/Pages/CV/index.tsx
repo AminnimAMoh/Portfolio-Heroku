@@ -40,7 +40,7 @@ function CV(): React.ReactElement {
     <div className={classes.root}>
       <Grid
         container
-        justify="space-between"
+        justifyContent="space-between"
         alignContent="flex-start"
         className={classes.topic_grid}
       >
@@ -81,7 +81,7 @@ function CV(): React.ReactElement {
           container
           xs={12}
           spacing={4}
-          justify="space-between"
+          justifyContent="space-between"
           alignContent="flex-start"
         >
           <Grid item xs={12}>
@@ -92,7 +92,7 @@ function CV(): React.ReactElement {
             container
             xs={12}
             spacing={4}
-            justify="space-between"
+            justifyContent="space-between"
             alignContent="flex-start"
           >
             <Grid item xs={12} sm={6}>
@@ -137,7 +137,7 @@ function CV(): React.ReactElement {
           container
           xs={12}
           spacing={4}
-          justify="space-between"
+          justifyContent="space-between"
           alignContent="flex-start"
         >
           <Grid item xs={12}>
@@ -148,7 +148,7 @@ function CV(): React.ReactElement {
             container
             xs={12}
             spacing={4}
-            justify="space-between"
+            justifyContent="space-between"
             alignContent="flex-start"
           >
             <Grid item xs={12} sm={6}>
@@ -195,7 +195,7 @@ function CV(): React.ReactElement {
             container
             xs={12}
             spacing={4}
-            justify="space-between"
+            justifyContent="space-between"
             alignContent="flex-start"
           >
             <Grid item xs={12} sm={6}>
@@ -230,7 +230,7 @@ function CV(): React.ReactElement {
             container
             xs={12}
             spacing={4}
-            justify="space-between"
+            justifyContent="space-between"
             alignContent="flex-start"
           >
             <Grid item xs={12} sm={6}>

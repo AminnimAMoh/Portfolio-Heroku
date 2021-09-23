@@ -30,7 +30,7 @@ function PageHeader({ ...props
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     container: true,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start",
     className: classes.topic_grid
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -44,6 +44,7 @@ function PageHeader({ ...props
     variant: "h4"
   }, "Collaboration Team:"), props.Collaboration && props.Collaboration.map(collaprators => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: collaprators,
       variant: "body2",
       style: {
         fontSize: "12px",
@@ -55,6 +56,7 @@ function PageHeader({ ...props
     linkTag
   }) => {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Link__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      key: linkTag,
       href: href,
       className: classes.onlineLink,
       style: {

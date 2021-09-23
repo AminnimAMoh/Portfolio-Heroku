@@ -26,9 +26,9 @@ const useStyle = makeStyles((theme) => ({
     '&>*': {
       padding: theme.spacing(4)
     },
-    '&>*:nth-child(n+4)': {
-      paddingTop: theme.spacing(20)
-    },
+    // '&>*:nth-child(n+3)': {
+    //   paddingTop: theme.spacing(20)
+    // },
   },
   topick_heading: {
     color: "white",

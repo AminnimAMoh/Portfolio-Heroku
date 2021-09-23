@@ -36,16 +36,9 @@ function ContentContainer(): React.ReactElement {
   const handleScroll = () => {
     rootDetails.current &&
     scrollToTop.current &&
-    rootDetails.current.scrollTop > 800
-      ? (scrollToTop.current.style.transform =
-          window.innerWidth > 1280
-            ? "translateY(-15px) scale(1)"
-            : "translateY(-75px) scale(1)")
-      : scrollToTop.current &&
-        (scrollToTop.current.style.transform =
-          window.innerWidth > 1280
-            ? "translateY(-15px) scale(0)"
-            : "translateY(-75px) scale(1)");
+    rootDetails.current.scrollTop > 800 
+    ? scrollToTop.current?.classList.add("open")
+    : scrollToTop.current?.classList.remove("open")
   };
 
   const handleClick = () => {

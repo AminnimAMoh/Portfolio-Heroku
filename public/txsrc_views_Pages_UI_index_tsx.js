@@ -40,7 +40,7 @@ function UI() {
     className: classes.root
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     container: true,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start",
     className: classes.topic_grid
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Topicheader, TopicProps), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -53,7 +53,7 @@ function UI() {
     container: true,
     xs: 12,
     spacing: 4,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,
@@ -70,7 +70,7 @@ function UI() {
     container: true,
     xs: 12,
     spacing: 4,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,
@@ -98,7 +98,7 @@ function UI() {
     container: true,
     xs: 12,
     spacing: 4,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,
@@ -142,7 +142,7 @@ function UI() {
     container: true,
     xs: 12,
     spacing: 4,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,
@@ -183,7 +183,7 @@ function UI() {
     container: true,
     xs: 12,
     spacing: 4,
-    justify: "space-between",
+    justifyContent: "space-between",
     alignContent: "flex-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__["default"], {
     item: true,

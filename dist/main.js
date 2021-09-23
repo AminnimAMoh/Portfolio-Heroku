@@ -10196,7 +10196,9 @@ function ContentContainer() {
   const scrollToTop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
   const handleScroll = () => {
-    rootDetails.current && scrollToTop.current && rootDetails.current.scrollTop > 800 ? scrollToTop.current.style.transform = window.innerWidth > 1280 ? "translateY(-15px) scale(1)" : "translateY(-75px) scale(1)" : scrollToTop.current && (scrollToTop.current.style.transform = window.innerWidth > 1280 ? "translateY(-15px) scale(0)" : "translateY(-75px) scale(1)");
+    var _scrollToTop$current, _scrollToTop$current2;
+
+    rootDetails.current && scrollToTop.current && rootDetails.current.scrollTop > 800 ? (_scrollToTop$current = scrollToTop.current) === null || _scrollToTop$current === void 0 ? void 0 : _scrollToTop$current.classList.add("open") : (_scrollToTop$current2 = scrollToTop.current) === null || _scrollToTop$current2 === void 0 ? void 0 : _scrollToTop$current2.classList.remove("open");
   };
 
   const handleClick = () => {
@@ -10303,6 +10305,7 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["defau
     }
   },
   MobileFrame: {
+    zIndex: 1,
     display: "none",
     position: "sticky",
     height: "auto",
@@ -10316,18 +10319,28 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["defau
     position: "sticky",
     top: "100%",
     right: "0%",
-    transform: "translateY(-15px) scale(0)",
+    transform: "translate(40px,-15px) scale(0)",
     width: mytheme.radius,
     height: mytheme.radius,
     borderRadius: "50%",
     cursor: "pointer",
     transition: "transform .5s ease-in-out",
+    "&.open": {
+      transform: "translate(40px,-35px) scale(.7)",
+      [theme.breakpoints.down("lg")]: {
+        transform: "translate(20px,-120px) scale(.7)"
+      },
+      [theme.breakpoints.down('md')]: {
+        transform: "translate(40px,-35px) scale(.5)"
+      }
+    },
     [theme.breakpoints.down('md')]: {
-      transform: "translateY(-35px) scale(0)"
+      transform: "translateY(40px,-35px) scale(0)"
     },
     "& >div": {
       width: '100%',
       height: '100%',
+      fontSize: '1em',
       backgroundImage: "url(images/Button/ScrollToTop/Top.png)",
       backgroundPosition: "center",
       backgroundSize: "contain",
@@ -10840,10 +10853,10 @@ const useStyle = (0,_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_0__["defau
     },
     '&>*': {
       padding: theme.spacing(4)
-    },
-    '&>*:nth-child(n+4)': {
-      paddingTop: theme.spacing(20)
-    }
+    } // '&>*:nth-child(n+3)': {
+    //   paddingTop: theme.spacing(20)
+    // },
+
   },
   topick_heading: {
     color: "white",

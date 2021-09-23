@@ -1,6 +1,6 @@
 import React from "react";
 import useStyle from "../styles";
-import { Grid, Typography, Link } from "@material-ui/core";
+import { Grid, Typography, Link, useMediaQuery } from "@material-ui/core";
 
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -8,57 +8,61 @@ import { RootState } from "../../../store";
 const Topicheader = React.lazy(
   () => import("../../Shared-Components/Page-header")
 );
-const YouTubeEmbed =React.lazy(()=>import("../YouTubeEmbed"));
+const YouTubeEmbed = React.lazy(() => import("../YouTubeEmbed"));
 
 function UX(): React.ReactElement {
   const classes = useStyle();
+  const gridFlowToggle = useMediaQuery("(max-width:1280px)")
   const {
     screenAction: { gridRowToReverce, gridRowToColumn },
   } = useSelector((state: RootState) => state);
-
+  console.log(gridFlowToggle);
+  
   const TopicProps = {
     ProjectName: "User Experience Case Studies. Environmental Conservation.",
     Collaboration: [
       "User Journey Map & Documentation: Mohammad Amin Mohammadi",
       "User Testings & Video: Brendan O'Reilly",
-      "Synthesizing Activity Design: Elliott Magrath"
+      "Synthesizing Activity Design: Elliott Magrath",
     ],
     Links: [
       {
         href: "images/Pages/UX/Visual-Report.pdf",
         linkTag: "Link to full report",
       },
-      {
-        href: "Assets/UI/A3 Final Report.pdf",
-        linkTag: "Link to full report",
-      },
     ],
     description:
       "Technology has played a significant role in increasing the world population dramatically. Consequently it has increased the level of the complexity of problems. However, user research methods developed around design frameworks can be a powerful tool to face these complex wicked problems. since the day I was introduced to the digital world, I have always been looking and thinking beyond the applications and platforms I have used. The temptation to find reliable solutions to build a better future for both humanity and the environment we live at.",
-  }; 
+  };
 
   return (
     <div className={classes.root}>
       <Grid
         container
         // spacing={4}
-        justify="space-between"
+        justifyContent="flex-start"
         alignContent="flex-start"
         className={classes.topic_grid}
       >
-        <Topicheader {...TopicProps}/>
+        <Topicheader {...TopicProps} />
         <Grid item xs={12}>
           <YouTubeEmbed embedID="AikAa-n8vq8" />
         </Grid>
         <Grid
           item
           container
-          direction={gridRowToReverce}
+          direction="row"
           spacing={4}
-          justify="center"
-          alignItems="flex-start"
+          justifyContent="flex-start"
+          alignContent="flex-start"
+          sm={12}
+          md={6}
         >
-          <Grid item lg={6} md={12}>
+          <Grid item xs={12} style={{ height: "200px" }}>
+            <Typography variant="h5">Knowledge to conserve</Typography>
+            <Typography variant="h3">Environment and Biodiversity</Typography>
+          </Grid>
+          <Grid item xs={12}>
             <Typography variant="body1">
               Currently our planet is at a critical point of animal extinction
               and bidovirsty loss. To aid in combatting this loss we have
@@ -72,35 +76,32 @@ function UX(): React.ReactElement {
               platform to continue with environmentally positive life choices.
             </Typography>
           </Grid>
-          <Grid item lg={6} md={12}>
-            <Typography variant="h5">
-              Knowledge As a tool to conserve
-            </Typography>
-            <Typography variant="h3">Environment and Biodiversity</Typography>
-          </Grid>
         </Grid>
 
         <Grid
           item
           container
-          direction={gridRowToColumn}
+          direction="row"
           spacing={4}
-          justify="center"
-          alignItems="flex-start"
+          justifyContent="flex-start"
+          alignContent="flex-start"
+          sm={12}
+          md={6}
         >
-          <Grid item lg={6} md={12}>
+          <Grid item xs={12} style={{ height: "200px" }}>
             <Typography variant="h5">What is the strategy?</Typography>
-            <Typography variant="h3">Design Solution</Typography>
+            <Typography variant="h3">Our Design Solution</Typography>
           </Grid>
-          <Grid item lg={6} md={12}>
+          <Grid item xs={12}>
             <Typography variant="body1">
-              Our design Solution is the Atmoscube, a cube roughly 450mm in
-              width, height and depth. Within this hologram cube we are propose
-              a city build game. The top of the product houses a touch and
-              distance sensitive interface that along with AI voice operated
-              system will be the way in which the user engages with the product.
-              Within the product will be a small AR city projected from the
-              base, this AR city will be built and managed by the user.
+              We named our design solution Atmoscube. Atmoscube is a cube
+              roughly 450mm in width, height and depth. Within this hologram
+              cube we are propose a city build game. The top of the product
+              houses a touch and distance sensitive interface that along with AI
+              voice operated system will be the way in which the user engages
+              with the product. Within the product will be a small AR city
+              projected from the base, this AR city will be built and managed by
+              the user.
             </Typography>
           </Grid>
         </Grid>
@@ -110,12 +111,16 @@ function UX(): React.ReactElement {
         <Grid
           item
           container
-          direction={gridRowToReverce}
+          direction="row"
           spacing={4}
-          justify="center"
-          alignItems="flex-start"
+          justifyContent="flex-start"
+          alignContent="flex-start"
         >
           <Grid item lg={6} md={12}>
+            <Typography variant="h5">Trial and Error</Typography>
+            <Typography variant="h3">Design Process</Typography>
+          </Grid>
+          <Grid item xs={12} style={{ height: "200ox" }}>
             <Typography variant="body1">
               The design process was guided by the aim of empowering people
               through education in an effort to aid against biodiversity loss
@@ -145,10 +150,6 @@ function UX(): React.ReactElement {
               was most suited to the tasks needs.
             </Typography>
           </Grid>
-          <Grid item lg={6} md={12}>
-            <Typography variant="h5">Trial and Error</Typography>
-            <Typography variant="h3">Design Process</Typography>
-          </Grid>
         </Grid>
         <Grid item xs={12}>
           <img src="images/Pages/UX/Render-2.png" alt="content" />
@@ -157,8 +158,8 @@ function UX(): React.ReactElement {
           item
           container
           spacing={4}
-          direction={gridRowToReverce}
-          justify="center"
+          direction="row"
+          justifyContent="center"
           alignItems="center"
           className={classes.inner_GridContainer}
         >
@@ -178,8 +179,8 @@ function UX(): React.ReactElement {
             item
             container
             spacing={4}
-            direction={gridRowToColumn}
-            justify="center"
+            direction={gridFlowToggle ? "column-reverse" : "row"}
+            justifyContent="center"
             alignItems="center"
             className={classes.inner_GridContainer}
           >

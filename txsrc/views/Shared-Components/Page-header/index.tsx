@@ -25,7 +25,7 @@ function PageHeader({ ...props }: Props): ReactElement {
   return (
     <Grid
       container
-      justify="space-between"
+      justifyContent="space-between"
       alignContent="flex-start"
       className={classes.topic_grid}
     >
@@ -37,6 +37,7 @@ function PageHeader({ ...props }: Props): ReactElement {
           props.Collaboration.map((collaprators) => {
             return (
               <Typography
+              key={collaprators}
                 variant="body2"
                 style={{ fontSize: "12px", color: "#426164" }}
               >
@@ -49,6 +50,7 @@ function PageHeader({ ...props }: Props): ReactElement {
           props.Links.map(({href, linkTag}) => {
             return (
               <Link
+              key={linkTag}
                 href={href}
                 className={classes.onlineLink}
                 style={{ bottom: "0px" }}
