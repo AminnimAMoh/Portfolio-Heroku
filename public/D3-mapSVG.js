@@ -15,6 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const SVGMAP=(container, data)=>{
+  // console.log(data);
     const mapContainer=container.append("g")
     .attr("id", "mapContainer")
     .attr('transform', "translate(-710,-175)");

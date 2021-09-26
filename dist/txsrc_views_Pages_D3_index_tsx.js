@@ -71,11 +71,16 @@ function D3() {
   const [svg, setSvg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [mapSVGState, setMapSVGState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    if (annualrain.state === "empty" || annualrain.state === "rejected") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAnnualrainData)());
-    if (slums.state === "empty" || slums.state === "rejected") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSlumsData)());
-    if (population.state === "empty" || population.state === "rejected") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchPopulationData)());
-    if (months.state === "empty" || months.state === "rejected") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMonthData)());
-    if (mapJSON.state === "empty" || mapJSON.state === "rejected") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMap)());
+    if (annualrain.state === "empty") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAnnualrainData)());
+    if (slums.state === "empty") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSlumsData)());
+    if (population.state === "empty") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchPopulationData)());
+    if (months.state === "empty") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMonthData)());
+    if (mapJSON.state === "empty") dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMap)());
+    if (annualrain.state === "rejected" && refresh) dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAnnualrainData)());
+    if (slums.state === "rejected" && refresh) dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchSlumsData)());
+    if (population.state === "rejected" && refresh) dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchPopulationData)());
+    if (months.state === "rejected" && refresh) dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMonthData)());
+    if (mapJSON.state === "rejected" && refresh) dispatch((0,_redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_2__.fetchMap)());
   }, [refresh, annualrain.state, slums.state, population.state, months.state, mapJSON.state, dispatch]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     annualrain.state === "fulfilled" && slums.state === "fulfilled" && population.state === "fulfilled" && months.state === "fulfilled" && mapJSON.state === "fulfilled" && setSVGSetupTrigger(true);

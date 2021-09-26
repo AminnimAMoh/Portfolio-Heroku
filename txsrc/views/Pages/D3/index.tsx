@@ -63,16 +63,17 @@ function D3(): React.ReactElement {
   >>(null);
 
   useEffect(() => {
-    if (annualrain.state === "empty" || annualrain.state === "rejected")
-      dispatch(fetchAnnualrainData());
-    if (slums.state === "empty" || slums.state === "rejected")
-      dispatch(fetchSlumsData());
-    if (population.state === "empty" || population.state === "rejected")
-      dispatch(fetchPopulationData());
-    if (months.state === "empty" || months.state === "rejected")
-      dispatch(fetchMonthData());
-    if (mapJSON.state === "empty" || mapJSON.state === "rejected")
-      dispatch(fetchMap());
+    if (annualrain.state === "empty") dispatch(fetchAnnualrainData());
+    if (slums.state === "empty") dispatch(fetchSlumsData());
+    if (population.state === "empty") dispatch(fetchPopulationData());
+    if (months.state === "empty") dispatch(fetchMonthData());
+    if (mapJSON.state === "empty") dispatch(fetchMap());
+
+    if (annualrain.state === "rejected" && refresh) dispatch(fetchAnnualrainData());
+    if (slums.state === "rejected" && refresh) dispatch(fetchSlumsData());
+    if (population.state === "rejected" && refresh) dispatch(fetchPopulationData());
+    if (months.state === "rejected" && refresh) dispatch(fetchMonthData());
+    if (mapJSON.state === "rejected" && refresh) dispatch(fetchMap());
   }, [
     refresh,
     annualrain.state,

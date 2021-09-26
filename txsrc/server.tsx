@@ -4,18 +4,15 @@ import { renderToString } from "react-dom/server";
 import App from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
-import {
-  ServerStyleSheets,
-  StylesProvider,
-} from "@material-ui/core/styles";
+import { ServerStyleSheets, StylesProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@mui/private-theming";
+import theme from "./theme";
 
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-
 app.use(express.static("public"));
-
 
 app.use((rec, res) => {
   const styleSheetsRegistry = new ServerStyleSheets();
@@ -23,9 +20,11 @@ app.use((rec, res) => {
   const html = renderToString(
     styleSheetsRegistry.collect(
       <StylesProvider>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <ThemeProvider theme={theme}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </ThemeProvider>
       </StylesProvider>
     )
   );

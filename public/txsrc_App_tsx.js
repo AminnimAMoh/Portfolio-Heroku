@@ -13,18 +13,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _AppStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AppStyle */ "./txsrc/AppStyle.tsx");
-/* harmony import */ var _material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Snackbar */ "./node_modules/@material-ui/core/es/Snackbar/Snackbar.js");
+/* harmony import */ var _material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Snackbar */ "./node_modules/@material-ui/core/es/Snackbar/Snackbar.js");
 /* harmony import */ var _material_ui_core_Slide__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Slide */ "./node_modules/@material-ui/core/es/Slide/Slide.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/es/Typography/Typography.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_slices_ScreenSettingsSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./redux/slices/ScreenSettingsSlice */ "./txsrc/redux/slices/ScreenSettingsSlice.tsx");
 /* harmony import */ var _redux_slices_fetchSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./redux/slices/fetchSlice */ "./txsrc/redux/slices/fetchSlice.tsx");
-/* harmony import */ var _material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/useMediaQuery */ "./node_modules/@material-ui/core/es/useMediaQuery/useMediaQuery.js");
+/* harmony import */ var _material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/useMediaQuery */ "./node_modules/@material-ui/core/es/useMediaQuery/useMediaQuery.js");
 /* harmony import */ var _views_MenuButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/MenuButton */ "./txsrc/views/MenuButton/index.tsx");
 /* harmony import */ var _views_ContentContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/ContentContainer */ "./txsrc/views/ContentContainer/index.tsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 //This is the 'majula'. Dark Souls fans are familiar with this place. 😅
 //Here we managing the main states.
+
 
 
 
@@ -46,12 +48,26 @@ function TransitionUp(props) {
   }));
 }
 
+const ErrorMessage = ({
+  err
+}) => {
+  console.log(err.message);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "caption"
+  }, "Failed to fetch data. Click here to try again."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "caption",
+    color: "secondary"
+  }, "Error Message: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "caption"
+  }, err.message));
+};
+
 function App() {
   // console.clear();
   const [svgSetupTrigger, setSVGSetupTrigger] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [snackState, setSnackState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  const windowState = (0,_material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_8__["default"])("(max-width:1280px)");
+  const windowState = (0,_material_ui_core_useMediaQuery__WEBPACK_IMPORTED_MODULE_9__["default"])("(max-width:1280px)");
   const {
     buttonAction: {
       rootState,
@@ -61,7 +77,10 @@ function App() {
       annualrain,
       slums,
       population,
-      months
+      months,
+      mapJSON,
+      errorState,
+      error
     }
   } = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state);
   const classes = (0,_AppStyle__WEBPACK_IMPORTED_MODULE_1__["default"])();
@@ -71,9 +90,10 @@ function App() {
     }
   }, [windowState]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    annualrain.state === "fulfilled" && slums.state === "fulfilled" && population.state === "fulfilled" && months.state === "fulfilled" && setSVGSetupTrigger(true);
-    (annualrain.state === "rejected" || slums.state === "rejected" || population.state === "rejected" || months.state === "rejected") && setSnackState(true);
-  }, [annualrain.state, slums.state, population.state, months.state]); //This function controles click action on the snack bar.
+    annualrain.state === "fulfilled" && slums.state === "fulfilled" && population.state === "fulfilled" && months.state === "fulfilled" && mapJSON.state === "fulfilled" && setSVGSetupTrigger(true);
+    console.log(svgSetupTrigger);
+    errorState && setSnackState(true);
+  }, [annualrain.state, slums.state, population.state, months.state, mapJSON.state, errorState]); //This function controles click action on the snack bar.
 
   const snackBarRefreshAction = () => {
     //First we set the 'refresh state of the 'fetchSlice' action to trigger the fetch
@@ -89,10 +109,12 @@ function App() {
     className: rootState ? `${classes.root} open` : `${classes.root} close`
   }, !svgSetupTrigger && buttonTrigered === "D3" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: classes.loading
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DataFetchPending, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, console.log(svgSetupTrigger), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(DataFetchPending, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_material_ui_core_Snackbar__WEBPACK_IMPORTED_MODULE_10__["default"], {
     open: snackState,
     TransitionComponent: TransitionUp,
-    message: `Failed to fetch data. Click here to try again.`,
+    message: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ErrorMessage, {
+      err: error
+    }),
     onClick: snackBarRefreshAction,
     classes: {
       root: classes.snackbar

@@ -1,23 +1,19 @@
-import { amber } from "@material-ui/core/colors";
-import { red } from "@material-ui/core/colors";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createTheme } from "@mui/material/styles";
 
-export default createMuiTheme({
+export default createTheme({
   palette: {
-    primary: red,
+    primary: {
+      main: "##5C3B42",
+      light: "##9C3C41",
+      dark: "##5C3B42",
+      contrastText: '#E4E5E7',
+    },
     secondary: {
-      main: amber.A400,
-      light: amber[200],
-      dark: amber[700],
+      main: "#061621",
+      light: "#12393D",
+      dark: "#061621",
+      contrastText: '#E4E5E7',
     },
-    type: "dark",
-  },
-  spacing: {
-    unit: 10,
-  },
-  props: {
-    MuiWithWidth: {
-      initialWidth: "lg",
-    },
-  },
+  }
 });
+

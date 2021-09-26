@@ -3,6 +3,7 @@ import {
   } from "../utilities";
 
 const SVGMAP=(container, data)=>{
+  // console.log(data);
     const mapContainer=container.append("g")
     .attr("id", "mapContainer")
     .attr('transform', "translate(-710,-175)");
